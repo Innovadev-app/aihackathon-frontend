@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.19.3",
+    "@react-native-community/netinfo": "^9.4.1",
+    "@types/jest": "^29.5.5",
+    "@types/node": "^20.8.2",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.10",
+    "amazon-cognito-identity-js": "^6.3.6",
+    "aws-amplify": "^5.3.11",
+    "typescript": "^5.2.2"
+  }
+}
