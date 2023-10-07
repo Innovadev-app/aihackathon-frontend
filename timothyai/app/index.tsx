@@ -26,33 +26,36 @@ function Timothy() {
 
 
   const onSend = (newMessages: IMessage[] = []) => {
+    console.log(newMessages);
     setMessages(GiftedChat.append(messages, newMessages));
 
     //Send Payload to BedRock and respond in Chat
-    fetch("https://1lqp8lahll.execute-api.us-west-2.amazonaws.com/prod/bedrock", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt: newMessages[0].text,
-      }),
-    })
-      .then((response) => response.json())
-      .then((responseData) => {
-        // const resp = React.useState<IMessage[]>([{
-        //   text: responseData,
-        //   createdAt: new Date(),
-        //   user: {
-        //     _id: 2,
-        //     name: 'GiftedChat',
-        //     avatar: 'https://t3.ftcdn.net/jpg/05/54/39/50/240_F_554395094_D4zOhvLOkvVt5OaWq8dUhqcHDDS87ltG.jpg',
-        //   }
-        // }]
-        // setMessages(GiftedChat.append(messages, resp));
-        console.log(JSON.stringify(responseData));
+    if (newMessages[0].user._id == 1) {
+      fetch("https://1lqp8lahll.execute-api.us-west-2.amazonaws.com/prod/bedrock", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt: newMessages[0].text,
+        }),
       })
+        .then((response) => response.json())
+        .then((responseData) => {
+          const resp = [{
+            _id: Math.round(Math.random() * 1000000),
+            text: responseData,
+            createdAt: new Date(),
+            user: {
+              _id: 2,
+              name: 'GiftedChat',
+              avatar: 'https://t3.ftcdn.net/jpg/05/54/39/50/240_F_554395094_D4zOhvLOkvVt5OaWq8dUhqcHDDS87ltG.jpg',
+            }
+          }];
+          onSend(resp);
+        })
+    }
   }
   
   const getVimeoId = (url: string) => {
