@@ -92,14 +92,16 @@ function Timothy() {
   return (
       <View style={styles.container}>
         <DropdownButton />
-        <GiftedChat
-          {...{ messages, onSend, renderMessageVideo }}
-          renderInputToolbar={props => customInputToolbar(props)}
-          renderBubble={(props) => <CustomSystemMessage {...props} />}
-          user={{
-            _id: 1,
-          }}
-        />
+        <View  style={styles.container2}>
+          <GiftedChat
+            {...{ messages, onSend, renderMessageVideo }}
+            renderInputToolbar={props => customInputToolbar(props)}
+            renderBubble={(props) => <CustomSystemMessage {...props} />}
+            user={{
+              _id: 1,
+            }}
+          />
+        </View>
     </View>
   );
 }
@@ -107,12 +109,20 @@ function Timothy() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+
+  },
+  container2: {
+    flex: 1,
+    
+    position: 'relative',
+    paddingTop:50,
   },
   video: {
     width: width / 1.5,
     height: 150,
     margin: 13,
     borderRadius: 13,
+    
   },
 });
 

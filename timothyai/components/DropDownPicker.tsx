@@ -14,12 +14,14 @@ const DropdownButton = () => {
   ]);
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, position: 'absolute', zIndex:1000}}>
             <View
                 style={{
                     flex: 1,
                     alignItems: 'center',
                     paddingHorizontal: 15,
+                    
+
                 }}>
                 <DropDownPicker
                 open={open}
