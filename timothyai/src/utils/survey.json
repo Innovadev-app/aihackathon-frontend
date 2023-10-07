@@ -15,38 +15,37 @@
       "FieldMapping": "PrayerPartner"
     }
   },
-  "PromptQuestions":
+  "MaturityTopics":
   {
-    "Q1": {"Title":"I am a Christian", "Weight": 100},
-    "Q2": {"Title":"I am associated to a local church", "Weight": 80},
-    "Q3": {"Title":"I am seeking God’s forgiveness", "Weight": 1},
-    "Q4": {"Title":"God feels very distant at this time in my life", "Weight": 1},
-    "Q5": {"Title":"I have a good knowledge of Bible background and history", "Weight": 1},
-    "Q6": {"Title":"I have a good knowledge of the Old Testament", "Weight": 1},
-    "Q7": {"Title":"I have a good knowledge of the New Testament", "Weight": 1},
-    "Q8": {"Title":"I have a good knowledge of the basic Christian beliefs", "Weight": 1},
-    "Q9": {"Title":"I have a good knowledge of the Old Testament", "Weight": 1},
-    "Q10": {"Title":"I am part of a group of Christians that holds me accountable", "Weight": 1},
-    "Q11": {"Title":"I am involved in Christian-based outreach programs in my community", "Weight": 1},
-    "Q12": {"Title":"I don’t have time to read the Bible and pray most days", "Weight": 1},
-    "Q13": {"Title":"I don’t have any grudges I have not forgiven", "Weight": 1},
-    "Q14": {"Title":"Tithing is a joy for me", "Weight": 1},
-    "Q15": {"Title":"I believe God is directly involved in my personal affairs", "Weight": 1},
-    "Q16": {"Title":"I often go out of my way to help my neighbor", "Weight": 1},
-    "Q17": {"Title":"I struggle seeing the value for my life", "Weight": 90}
+    "Q1": {"Title":"You are a Christian", "Weight": 100},
+    "Q2": {"Title":"You belong to a local church", "Weight": 80},
+    "Q3": {"Title":"You are seeking God’s forgiveness", "Weight": 1},
+    "Q4": {"Title":"God feels very distant at this time in your life", "Weight": 1},
+    "Q5": {"Title":"You have a good knowledge of Bible background and history", "Weight": 1},
+    "Q6": {"Title":"You have a good knowledge of the Old Testament", "Weight": 1},
+    "Q7": {"Title":"You have a good knowledge of the New Testament", "Weight": 1},
+    "Q8": {"Title":"You have a good knowledge of the basic Christian beliefs", "Weight": 1},
+    "Q9": {"Title":"You struggle seeing the value for your life", "Weight": 90},
+    "Q10": {"Title":"You have an accountability partner that helps you with your spiritual journey", "Weight": 1},
+    "Q11": {"Title":"You am involved in Christian-based outreach programs in my community", "Weight": 1},
+    "Q12": {"Title":"You don’t have time to read the Bible and pray most days", "Weight": 1},
+    "Q13": {"Title":"You don’t have any grudges you have not forgiven", "Weight": 1},
+    "Q14": {"Title":"Tithing is a joy for you", "Weight": 1},
+    "Q15": {"Title":"You believe God is directly involved in your personal affairs", "Weight": 1},
+    "Q16": {"Title":"You often go out of your way to help my neighbor", "Weight": 1}
   },
   "Prompts":{
     "Q1": {
       "Prayer": {
         "Processor":"Bedrock",
-        "Prompt":"recommend a prayer for personal salvation",
+        "Prompt":"recommend a Christian prayer for personal salvation",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
       },
       "Scripture": {
         "Processor":"Bedrock",
-        "Prompt":"recommend scripture related to personal salvation",
+        "Prompt":"recommend scripture from the ESV translation related to personal salvation",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
@@ -88,7 +87,7 @@
     "Q3": {
       "Prayer": {
         "Processor":"Bedrock",
-        "Prompt":"recommend a prayer for dealing with personal guilt and forgivess",
+        "Prompt":"recommend a Christian prayer for dealing with personal guilt and forgivess",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
@@ -125,7 +124,7 @@
     "Q4": {
       "Prayer": {
         "Processor":"Bedrock",
-        "Prompt":"recommend a prayer when I feel distant or seperated from God",
+        "Prompt":"recommend a Christian prayer when I feel distant or seperated from God",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
@@ -163,7 +162,7 @@
     "Q5": {
       "Prayer": {
         "Processor":"Bedrock",
-        "Prompt":"recommend a prayer for the Holy Spirit to guide me in the understanding and application of scripture, to further my spiritual growth in Christ likeness",
+        "Prompt":"recommend a Christian prayer for the Holy Spirit to guide me in the understanding and application of scripture, to further my spiritual growth in Christ likeness",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
@@ -201,7 +200,7 @@
     "Q6": {
       "Prayer": {
         "Processor":"Bedrock",
-        "Prompt":"recommend a prayer for the Holy Spirit to guide me in the understanding and application of the old testament, to further my spiritual growth in Christ likeness",
+        "Prompt":"recommend a Christian prayer for the Holy Spirit to guide me in the understanding and application of the old testament, to further my spiritual growth in Christ likeness",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
@@ -239,7 +238,7 @@
     "Q7": {
       "Prayer": {
         "Processor":"Bedrock",
-        "Prompt":"recommend a prayer for the Holy Spirit to guide me in the understanding and application of the new testament, to further my spiritual growth in Christ likeness",
+        "Prompt":"recommend a Christian prayer for the Holy Spirit to guide me in the understanding and application of the new testament, to further my spiritual growth in Christ likeness",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
@@ -277,14 +276,14 @@
     "Q8": {
       "Prayer": {
         "Processor":"Bedrock",
-        "Prompt":"recommend a prayer for ...",
+        "Prompt":"what are the basic christian beliefs.  recommend a Christian prayer to help me understand and apply the basic christian beliefs",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
       },
       "Scripture": {
         "Processor":"Bedrock",
-        "Prompt":"recommend scripture related to ...",
+        "Prompt":"recommend scripture to help me better understand and apply the basic christian beliefs",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
@@ -315,17 +314,17 @@
     "Q9": {
       "Prayer": {
         "Processor":"Bedrock",
-        "Prompt":"recommend a prayer for ...",
+        "Prompt":"recommend a Christian prayer that helps me understand the value for my life",
         "Temperature": ".7",
-        "TopP": "1",
-        "LengthIncrements": "150"
+        "TopP": ".8",
+        "LengthIncrements": "500"
       },
       "Scripture": {
         "Processor":"Bedrock",
-        "Prompt":"recommend scripture related to ...",
+        "Prompt":"recommend scripture from the ESV translation that helps me understand the value for my life",
         "Temperature": ".7",
         "TopP": "1",
-        "LengthIncrements": "150"
+        "LengthIncrements": "200"
       },
       "Sermon": {
         "Processor":"Kendra",
@@ -353,14 +352,14 @@
     "Q10": {
       "Prayer": {
         "Processor":"Bedrock",
-        "Prompt":"recommend a prayer for ...",
+        "Prompt":"recommend a Christian prayer to find a good accountability partner",
         "Temperature": ".7",
-        "TopP": "1",
-        "LengthIncrements": "150"
+        "TopP": ".8",
+        "LengthIncrements": "500"
       },
       "Scripture": {
         "Processor":"Bedrock",
-        "Prompt":"recommend scripture related to ...",
+        "Prompt":"recommend scripture from the ESV translation related to the value of an accountability partner",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
@@ -391,14 +390,14 @@
     "Q11": {
       "Prayer": {
         "Processor":"Bedrock",
-        "Prompt":"recommend a prayer for ...",
+        "Prompt":"recommend a Christian prayer to help me understand the value, impact, and purpose of community outreach",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
       },
       "Scripture": {
         "Processor":"Bedrock",
-        "Prompt":"recommend scripture related to ...",
+        "Prompt":"recommend scripture from the ESV translation to help me understand the value, impact, and purpose of community outreach",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
@@ -429,14 +428,14 @@
     "Q12": {
       "Prayer": {
         "Processor":"Bedrock",
-        "Prompt":"recommend a prayer for ...",
+        "Prompt":"recommend a Christian prayer to understand the value of prayer, how to create a habit, and to find the time to pray",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
       },
       "Scripture": {
         "Processor":"Bedrock",
-        "Prompt":"recommend scripture related to ...",
+        "Prompt":"recommend scripture from the ESV translation related to understanding the value of prayer, how to create a habit, and how to find the time to pray",
         "Temperature": ".7",
         "TopP": "1",
         "LengthIncrements": "150"
