@@ -25,9 +25,23 @@ function Timothy() {
   ]);
 
 
+  const handleServerResponse = (responseData: any) => {
+    const resp = [{
+      _id: Math.round(Math.random() * 1000000),
+      text: responseData,
+      createdAt: new Date(),
+      user: {
+        _id: 2,
+        name: 'GiftedChat',
+        avatar: 'https://t3.ftcdn.net/jpg/05/54/39/50/240_F_554395094_D4zOhvLOkvVt5OaWq8dUhqcHDDS87ltG.jpg',
+      }
+    }];
+    setMessages((previousMessages) => GiftedChat.append(previousMessages, resp));
+  };
+
   const onSend = (newMessages: IMessage[] = []) => {
     console.log(newMessages);
-    setMessages(GiftedChat.append(messages, newMessages));
+    setMessages((previousMessages) => GiftedChat.append(previousMessages, newMessages));
 
     //Send Payload to BedRock and respond in Chat
     if (newMessages[0].user._id == 1) {
@@ -41,22 +55,10 @@ function Timothy() {
           prompt: newMessages[0].text,
         }),
       })
-        .then((response) => response.json())
-        .then((responseData) => {
-          const resp = [{
-            _id: Math.round(Math.random() * 1000000),
-            text: responseData,
-            createdAt: new Date(),
-            user: {
-              _id: 2,
-              name: 'GiftedChat',
-              avatar: 'https://t3.ftcdn.net/jpg/05/54/39/50/240_F_554395094_D4zOhvLOkvVt5OaWq8dUhqcHDDS87ltG.jpg',
-            }
-          }];
-          onSend(resp);
-        })
+          .then((response) => response.json())
+          .then(handleServerResponse);
     }
-  }
+  };
   
   const getVimeoId = (url: string) => {
     const regExp = /^.*(vimeo\.com\/)([0-9]*).*/;
