@@ -104,7 +104,7 @@ function Timothy() {
       user: {
         _id: 2,
         name: 'GiftedChat',
-        avatar: 'https://t3.ftcdn.net/jpg/05/54/39/50/240_F_554395094_D4zOhvLOkvVt5OaWq8dUhqcHDDS87ltG.jpg',
+        avatar: require('../assets/images/timothy-avatar.png'),
       }
     }];
     setMessages((previousMessages) => GiftedChat.append(previousMessages, resp));
@@ -162,7 +162,8 @@ function Timothy() {
   return (
       <View style={styles.container}>
         <DropdownButton />
-        <GiftedChat
+        <View  style={styles.container2}>
+          <GiftedChat
             {...{ messages, onSend, renderMessageVideo }}
             renderInputToolbar={props => customInputToolbar(props)}
             renderBubble={(props) => <CustomSystemMessage {...props} />}
@@ -172,18 +173,27 @@ function Timothy() {
         />
         {showRating && <Rating onRate={handleResponse} />}
       </View>
+      </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+
+  },
+  container2: {
+    flex: 1,
+    
+    position: 'relative',
+    paddingTop:50,
   },
   video: {
     width: width / 1.5,
     height: 150,
     margin: 13,
     borderRadius: 13,
+    
   },
 });
 
