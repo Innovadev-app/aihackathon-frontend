@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Dimensions, Platform } from 'react-native';
+import { View, StyleSheet, Dimensions, Platform } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 // import { WebView } from 'react-native-webview';
 import { GiftedChat, IMessage } from 'react-native-gifted-chat';
@@ -7,14 +7,7 @@ const { width } = Dimensions.get('window');
 // TODO: add Dynamo?
 
 
-
-import { useRouter } from 'expo-router';
-import { Pressable } from 'react-native';
-
-
-
 function Timothy() {
-  const router = useRouter();
 
   const [messages, setMessages] = React.useState<IMessage[]>([
     {
@@ -68,37 +61,6 @@ function Timothy() {
             _id: 1,
           }}
         />
-        
-      <Pressable onPress={() => router.push('/goals')}>
-        <View className="bg-red-500 w-full h-25 border border-solid">
-          <Text>Goals</Text>
-        </View>
-      </Pressable>
-
-      <Pressable onPress={() => router.push('/connect')}>
-        <View className="bg-red-500 w-full h-25 border border-solid">
-          <Text>Connect</Text>
-        </View>
-      </Pressable>
-
-      <Pressable onPress={() => router.push('/pray')}>
-        <View className="bg-red-500 w-full h-25 border border-solid">
-          <Text>Pray</Text>
-        </View>
-      </Pressable>
-
-      <Pressable onPress={() => router.push('/profile')}>
-        <View className="bg-red-500 w-full h-25 border border-solid">
-          <Text>Profile</Text>
-        </View>
-      </Pressable>
-
-      <Pressable onPress={() => router.push('/index')}>
-        <View className="bg-blue-500 w-full h-25 border border-solid">
-          <Text>Timothy</Text>
-        </View>
-      </Pressable>
-
     </View>
   );
 }

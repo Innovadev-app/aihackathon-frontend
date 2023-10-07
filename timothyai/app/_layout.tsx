@@ -1,10 +1,16 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, Theme, ThemeProvider } from '@react-navigation/native';
+import { Theme, NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFonts } from 'expo-font';
-import { SplashScreen, Stack } from 'expo-router';
+import { SplashScreen } from 'expo-router';
 import { useEffect } from 'react';
-import { useColorScheme } from 'react-native';
 import { NativeWindStyleSheet } from 'nativewind';
+
+import Connect from './connect';
+import Goals from './goals';
+import Index from './index';
+import Pray from './pray';
+import Profile from './profile';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -23,11 +29,15 @@ NativeWindStyleSheet.setOutput({
   default: 'native',
 });
 
+
+
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, global-require
     ...FontAwesome.font,
   });
+
+
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
@@ -37,13 +47,15 @@ export default function RootLayout() {
   return (
     <>
       {/* Keep the splash screen open until the assets have loaded. In the future, we should just support async font loading with a native version of font-display. */}
-      {loaded ? <RootLayoutNav /> : <SplashScreen />}
+      {loaded ? (<NavigationContainer theme={DarkTheme}>
+          <RootLayoutNav />
+        </NavigationContainer>) : <SplashScreen />}
     </>
   );
 }
 
-const LightTheme: Theme = {
-  dark: false,
+const DarkTheme: Theme = {
+  dark: true,
   colors: {
     primary: 'rgb(0, 122, 255)',
     background: 'rgb(255, 255, 255)', // Controls app whole background color
@@ -55,15 +67,15 @@ const LightTheme: Theme = {
 };
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+  const Tab = createBottomTabNavigator();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : LightTheme}>
-      <Stack>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="notifications" />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+    <Tab.Navigator initialRouteName="Index">
+      <Tab.Screen name="Goals" component={Goals} />
+      <Tab.Screen name="Pray" component={Pray} />
+      <Tab.Screen name="Index" component={Index} />
+      <Tab.Screen name="Connect" component={Connect} />
+      <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
   );
 }
