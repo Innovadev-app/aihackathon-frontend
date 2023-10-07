@@ -40,7 +40,7 @@ function Timothy() {
   ]);
 
   // Sorts question by weight
-  const sortedQuestions = Object.entries(file.PromptQuestions)
+  const sortedQuestions = Object.entries(file.MaturityTopics)
       .sort(([,a], [,b]) => b.Weight - a.Weight)
       .slice(0, 3);
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
