@@ -80,3 +80,13 @@ type Profile @model @auth(rules: [{allow: public}]) {
   Organizations: [Organizations] @hasMany(indexName: "byProfile", fields: ["id"])
   SmallGroups: [SmallGroups] @hasMany(indexName: "byProfile", fields: ["id"])
 }
+
+type Events @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  TimeStamp: AWSDateTime
+  Title: String
+  Description: String
+  Link: AWSURL
+  Image: String
+  organizationsID: ID! @index(name: "byOrganizations")
+}
