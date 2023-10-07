@@ -5,6 +5,7 @@ import { useFonts } from 'expo-font';
 import { SplashScreen } from 'expo-router';
 import { useEffect } from 'react';
 import { NativeWindStyleSheet } from 'nativewind';
+import TabBarIcon from '../components/TabBarIcon';
 
 import Connect from './connect';
 import Goals from './goals';
@@ -47,9 +48,11 @@ export default function RootLayout() {
   return (
     <>
       {/* Keep the splash screen open until the assets have loaded. In the future, we should just support async font loading with a native version of font-display. */}
-      {loaded ? (<NavigationContainer theme={DarkTheme}>
+      {loaded ? (
+        <NavigationContainer theme={DarkTheme}>
           <RootLayoutNav />
-        </NavigationContainer>) : <SplashScreen />}
+        </NavigationContainer>
+        ) : <SplashScreen />}
     </>
   );
 }
@@ -70,12 +73,48 @@ function RootLayoutNav() {
   const Tab = createBottomTabNavigator();
 
   return (
-    <Tab.Navigator initialRouteName="Index">
-      <Tab.Screen name="Goals" component={Goals} />
-      <Tab.Screen name="Pray" component={Pray} />
-      <Tab.Screen name="Index" component={Index} />
-      <Tab.Screen name="Connect" component={Connect} />
-      <Tab.Screen name="Profile" component={Profile} />
+    <Tab.Navigator initialRouteName="Index"
+    screenOptions={{
+      tabBarStyle: { backgroundColor: 'black' },
+      tabBarActiveTintColor: '#53FFC5',
+      tabBarInactiveTintColor: '#BEC3C9',
+    }}
+    >
+        <Tab.Screen
+      name="Goals"
+      component={Goals}
+      options={{
+        tabBarIcon: (props) => <TabBarIcon {...props} name='Goals' />,
+      }}
+    />
+    <Tab.Screen
+      name="Pray"
+      component={Pray}
+      options={{
+        tabBarIcon: (props) => <TabBarIcon {...props} name='Pray' />,
+      }}
+    />
+    <Tab.Screen
+      name="Index"
+      component={Index}
+      options={{
+        tabBarIcon: (props) => <TabBarIcon {...props} name='Index' />,
+      }}
+    />
+    <Tab.Screen
+      name="Connect"
+      component={Connect}
+      options={{
+        tabBarIcon: (props) => <TabBarIcon {...props} name='Connect' />,
+      }}
+    />
+    <Tab.Screen
+      name="Profile"
+      component={Profile}
+      options={{
+        tabBarIcon: (props) => <TabBarIcon {...props} name='Profile' />,
+      }}
+    />
     </Tab.Navigator>
   );
 }
