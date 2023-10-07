@@ -1,4 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { StatusBar } from 'react-native';
 import { Theme, NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFonts } from 'expo-font';
@@ -47,11 +48,15 @@ export default function RootLayout() {
 
   return (
     <>
+      
       {/* Keep the splash screen open until the assets have loaded. In the future, we should just support async font loading with a native version of font-display. */}
       {loaded ? (
-        <NavigationContainer theme={DarkTheme}>
-          <RootLayoutNav />
-        </NavigationContainer>
+        <>
+          <StatusBar barStyle="light-content" />
+          <NavigationContainer theme={DarkTheme}>
+            <RootLayoutNav />
+          </NavigationContainer>
+        </>
         ) : <SplashScreen />}
     </>
   );
@@ -61,9 +66,9 @@ const DarkTheme: Theme = {
   dark: true,
   colors: {
     primary: 'rgb(0, 122, 255)',
-    background: 'rgb(255, 255, 255)', // Controls app whole background color
-    card: 'rgb(255, 255, 255)',
-    text: 'rgb(28, 28, 30)',
+    background: 'rgb(9, 9, 9)',
+    card: 'rgb(9, 9, 9)',
+    text: 'rgb(255, 255, 255)',
     border: 'rgb(216, 216, 216)',
     notification: 'rgb(255, 59, 48)',
   },
@@ -95,10 +100,10 @@ function RootLayoutNav() {
       }}
     />
     <Tab.Screen
-      name="Index"
+      name="Timothy"
       component={Index}
       options={{
-        tabBarIcon: (props) => <TabBarIcon {...props} name='Index' />,
+        tabBarIcon: (props) => <TabBarIcon {...props} name='Timothy' />,
       }}
     />
     <Tab.Screen
