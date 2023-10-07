@@ -10,7 +10,7 @@ const TabBarIcon = ({ name, color }) => {
     case 'Pray':
       iconName = 'pray';
       break;
-    case 'Index':
+    case 'Timothy':
       iconName = 'comment';
       break;
     case 'Connect':
