@@ -78,7 +78,7 @@ function RootLayoutNav() {
   const Tab = createBottomTabNavigator();
 
   return (
-    <Tab.Navigator initialRouteName="Index"
+    <Tab.Navigator initialRouteName="Timothy"
     screenOptions={{
       tabBarStyle: { backgroundColor: 'black' },
       tabBarActiveTintColor: '#53FFC5',

@@ -1,19 +1,10 @@
-import { Pressable, Text, View } from 'react-native';
-import { useRouter } from 'expo-router';
+import { Text, View } from 'react-native';
 
 export default function PrayerRoom() {
-  const router = useRouter();
 
   return (
-    <View>
-      <Text>In PrayerRoom</Text>
-
-      <Pressable onPress={() => router.push('/accountabilitymodal')}>
-        <View className="bg-blue-500 w-full h-25 border border-solid">
-          <Text>Accountabilty Modal</Text>
-        </View>
-      </Pressable>
-
+    <View className="mx-6 mt-8">
+      <Text className='text-3xl font-bold text-white mb-6'>My Prayers</Text>
     </View>
   );
 }
