@@ -89,6 +89,8 @@ function Timothy() {
   React.useEffect(() => {
     if (currentQuestion) {
       askQuestion();
+    } else {
+      console.log(answers)
     }
   }, [currentQuestion]);
 
