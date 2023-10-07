@@ -1,10 +1,11 @@
 import { Pressable, Text, View } from 'react-native';
+import { useRouter } from 'expo-router';
 
-export default function Notifications() {
+export default function Profile() {
   return (
     <View>
       <Pressable />
-      <Text>In notification</Text>
+      <Text>In Profile</Text>
     </View>
   );
 }

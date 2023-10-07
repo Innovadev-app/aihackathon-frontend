@@ -61,24 +61,44 @@ function Timothy() {
     );
   };
   return (
-    <View style={styles.container}>
-      <GiftedChat
-        {...{ messages, onSend, renderMessageVideo }}
-        user={{
-          _id: 1,
-        }}
-      />
-            <Pressable onPress={() => router.push('/notifications')}>
-        <View className="bg-red-500 w-full h-20 border border-solid">
-          <Text>Notifications</Text>
+      <View style={styles.container}>
+        <GiftedChat
+          {...{ messages, onSend, renderMessageVideo }}
+          user={{
+            _id: 1,
+          }}
+        />
+        
+      <Pressable onPress={() => router.push('/goals')}>
+        <View className="bg-red-500 w-full h-25 border border-solid">
+          <Text>Goals</Text>
         </View>
       </Pressable>
 
-      <Pressable onPress={() => router.push('/modal')}>
-        <View className="bg-blue-500 w-full h-20 border border-solid">
-          <Text>Modal</Text>
+      <Pressable onPress={() => router.push('/connect')}>
+        <View className="bg-red-500 w-full h-25 border border-solid">
+          <Text>Connect</Text>
         </View>
       </Pressable>
+
+      <Pressable onPress={() => router.push('/pray')}>
+        <View className="bg-red-500 w-full h-25 border border-solid">
+          <Text>Pray</Text>
+        </View>
+      </Pressable>
+
+      <Pressable onPress={() => router.push('/profile')}>
+        <View className="bg-red-500 w-full h-25 border border-solid">
+          <Text>Profile</Text>
+        </View>
+      </Pressable>
+
+      <Pressable onPress={() => router.push('/index')}>
+        <View className="bg-blue-500 w-full h-25 border border-solid">
+          <Text>Timothy</Text>
+        </View>
+      </Pressable>
+
     </View>
   );
 }
