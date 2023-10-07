@@ -1,4 +1,82 @@
-# This "input" configures a global authorization rule to enable public access to
-# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+type SmallGroups @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  TimeStamp: String
+  Title: String
+  Description: String
+  Tags: AWSJSON
+  profileID: ID! @index(name: "byProfile")
+  organizationsID: ID! @index(name: "byOrganizations")
+}
 
+type Resource @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  TimeStamp: AWSDateTime
+  Title: String
+  Description: String
+  Link: AWSURL
+  Image: String
+  Tags: AWSJSON
+  organizationsID: ID! @index(name: "byOrganizations")
+}
+
+type Sermon @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  TimeStamp: AWSDateTime
+  Title: String
+  Description: String
+  Link: AWSURL
+  Image: String
+  organizationsID: ID! @index(name: "byOrganizations")
+}
+
+type Organizations @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  TimeStamp: AWSDateTime
+  profileID: ID! @index(name: "byProfile")
+  Sermons: [Sermon] @hasMany(indexName: "byOrganizations", fields: ["id"])
+  Resources: [Resource] @hasMany(indexName: "byOrganizations", fields: ["id"])
+  SmallGroups: [SmallGroups] @hasMany(indexName: "byOrganizations", fields: ["id"])
+}
+
+type Recommendations @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  TimeStamp: AWSDateTime
+  Recommendations: String
+  Classification: String
+  Tags: AWSJSON
+  profileID: ID! @index(name: "byProfile")
+  questionID: ID! @index(name: "byQuestion")
+}
+
+type Question @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  TimeStamp: AWSDateTime
+  SurveyResults: String
+  profileID: ID! @index(name: "byProfile")
+  Recommendations: [Recommendations] @hasMany(indexName: "byQuestion", fields: ["id"])
+}
+
+type Prayer @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  TimeStamp: AWSDateTime
+  Title: String
+  Text: String
+  Summary: String
+  Tags: AWSJSON
+  profileID: ID! @index(name: "byProfile")
+}
+
+type Profile @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  CognitoId: String
+  FirstName: String
+  LastName: String
+  TimeStamp: AWSDateTime
+  Email: String
+  Address: String
+  Prayers: [Prayer] @hasMany(indexName: "byProfile", fields: ["id"])
+  Questions: [Question] @hasMany(indexName: "byProfile", fields: ["id"])
+  Recommendations: [Recommendations] @hasMany(indexName: "byProfile", fields: ["id"])
+  Organizations: [Organizations] @hasMany(indexName: "byProfile", fields: ["id"])
+  SmallGroups: [SmallGroups] @hasMany(indexName: "byProfile", fields: ["id"])
+}
