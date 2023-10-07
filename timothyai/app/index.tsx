@@ -1,15 +1,29 @@
 import * as React from 'react';
-import { View, StyleSheet, Dimensions, Platform, Text } from 'react-native';
+import {View, StyleSheet, Dimensions, Platform, Text, Button} from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 // import { WebView } from 'react-native-webview';
 import { GiftedChat, IMessage, InputToolbar, Composer } from 'react-native-gifted-chat';
 import DropdownButton from '../components/DropDownPicker';
+import file from '../src/utils/survey.json'
 
 const { width } = Dimensions.get('window');
 // TODO: add Dynamo?
 
 
 function Timothy() {
+
+  const ratings = ['Strongly agree', 'Somewhat agree', 'Neutral', 'Somewhat disagree', 'Strongly disagree'];
+
+  const Rating = ({ onRate }) => {
+    return (
+        <View style={styles.container}>
+          {ratings.map((rating, index) => (
+              <Button key={index} title={rating} onPress={() => onRate(index + 1)} />
+          ))}
+        </View>
+    );
+  };
+
 
   const [messages, setMessages] = React.useState<IMessage[]>([
     {
@@ -25,8 +39,64 @@ function Timothy() {
 
   ]);
 
+  // Sorts question by weight
+  const sortedQuestions = Object.entries(file.MaturityTopics)
+      .sort(([,a], [,b]) => b.Weight - a.Weight)
+      .slice(0, 3);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
+  const [answers, setAnswers] = React.useState({});
+
+  const [currentQuestion, setCurrentQuestion] = React.useState(sortedQuestions[0]);
+  const [showRating, setShowRating] = React.useState(false);
+
+  const handleResponse = (response: number) => {
+    setAnswers(prevAnswers => ({
+      ...prevAnswers,
+      [currentQuestion[0]]: response
+    }));
+    const newMessages = [{
+      _id: Math.round(Math.random() * 1000000),
+      text: ratings[response - 1],
+      createdAt: new Date(),
+      user: {
+        _id: 1,
+        name: 'GiftedChat',
+        avatar: 'https://t3.ftcdn.net/jpg/05/54/39/50/240_F_554395094_D4zOhvLOkvVt5OaWq8dUhqcHDDS87ltG.jpg',
+      }
+    }];
+    setMessages((previousMessages) => GiftedChat.append(previousMessages, newMessages));
+    setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+    setCurrentQuestion(sortedQuestions[currentQuestionIndex + 1]);
+    setShowRating(false);
+  };
+
+  const askQuestion = () => {
+    const questionMessage = [{
+      _id: Math.round(Math.random() * 1000000),
+      text: currentQuestion[1].Title,
+      createdAt: new Date(),
+      user: {
+        _id: 2,
+        name: 'GiftedChat',
+        avatar: 'https://t3.ftcdn.net/jpg/05/54/39/50/240_F_554395094_D4zOhvLOkvVt5OaWq8dUhqcHDDS87ltG.jpg',
+      },
+    }];
+    setMessages((previousMessages) => GiftedChat.append(previousMessages, questionMessage));
+    setShowRating(true);
+  };
+
+  // Call askQuestion whenever currentQuestion changes
+  React.useEffect(() => {
+    if (currentQuestion) {
+      askQuestion();
+    } else {
+      console.log(answers)
+    }
+  }, [currentQuestion]);
+
 
   const handleServerResponse = (responseData: any) => {
+
     const resp = [{
       _id: Math.round(Math.random() * 1000000),
       text: responseData,
@@ -60,7 +130,7 @@ function Timothy() {
           .then(handleServerResponse);
     }
   };
-  
+
   const getVimeoId = (url: string) => {
     const regExp = /^.*(vimeo\.com\/)([0-9]*).*/;
     const match = url.match(regExp);
@@ -75,17 +145,17 @@ function Timothy() {
     if (currentMessage.video.includes('vimeo')) {
       if(Platform.OS === 'web') {
         return null
-      } 
+      }
     }
     return (
-      <Video
-        style={styles.video}
-        source={{
-          uri: currentMessage!.video!,
-        }}
-        useNativeControls
-        resizeMode={ResizeMode.COVER}
-      />
+        <Video
+            style={styles.video}
+            source={{
+              uri: currentMessage!.video!,
+            }}
+            useNativeControls
+            resizeMode={ResizeMode.COVER}
+        />
 
     );
   };
@@ -100,9 +170,10 @@ function Timothy() {
             user={{
               _id: 1,
             }}
-          />
-        </View>
-    </View>
+        />
+        {showRating && <Rating onRate={handleResponse} />}
+      </View>
+      </View>
   );
 }
 
