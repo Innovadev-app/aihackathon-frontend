@@ -82,7 +82,7 @@ function RootLayoutNav() {
     
     screenOptions={{
       tabBarStyle: { backgroundColor: 'black' },
-      tabBarActiveTintColor: '#53FFC5',
+      tabBarActiveTintColor: '#00ff00',
       tabBarInactiveTintColor: '#BEC3C9',
       
     }}
