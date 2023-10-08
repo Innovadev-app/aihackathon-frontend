@@ -61,7 +61,7 @@ function Timothy() {
       user: {
         _id: 1,
         name: 'GiftedChat',
-        avatar: 'https://t3.ftcdn.net/jpg/05/54/39/50/240_F_554395094_D4zOhvLOkvVt5OaWq8dUhqcHDDS87ltG.jpg',
+        avatar: require('../assets/images/timothy-avatar.png'),
       }
     }];
     setMessages((previousMessages) => GiftedChat.append(previousMessages, newMessages));
@@ -77,7 +77,7 @@ function Timothy() {
       user: {
         _id: 2,
         name: 'GiftedChat',
-        avatar: 'https://t3.ftcdn.net/jpg/05/54/39/50/240_F_554395094_D4zOhvLOkvVt5OaWq8dUhqcHDDS87ltG.jpg',
+        avatar: require('../assets/images/timothy-avatar.png'),
       },
     }];
     setMessages((previousMessages) => GiftedChat.append(previousMessages, questionMessage));

@@ -1,5 +1,6 @@
 import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Profile() {
   return (

@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "extends": ["effectual/typescript"],
+  "rules": {
+    "react/no-unstable-nested-components": [ "error", { "allowAsProps": true }],
+    "react/style-prop-object": ["error",
+      {"allow": ["ExpoStatusBar"]}]
+    
+  },
+  "parserOptions": {"project": ["tsconfig.json"]}
+}
