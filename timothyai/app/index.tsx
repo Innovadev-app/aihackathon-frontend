@@ -5,18 +5,20 @@ import { Video, ResizeMode } from 'expo-av';
 import { GiftedChat, IMessage, InputToolbar, Composer } from 'react-native-gifted-chat';
 import DropdownButton from '../components/DropDownPicker';
 import file from '../src/utils/survey.json'
+import {useState} from "react";
 
 const { width } = Dimensions.get('window');
 // TODO: add Dynamo?
 
 
 function Timothy() {
+    const [showInputBar, setShowInputBar] = useState(false);
 
   const ratings = ['Strongly agree', 'Somewhat agree', 'Neutral', 'Somewhat disagree', 'Strongly disagree'];
 
   const Rating = ({ onRate }) => {
     return (
-        <View style={styles.container}>
+        <View>
           {ratings.map((rating, index) => (
               <Button key={index} title={rating} onPress={() => onRate(index + 1)} />
           ))}
@@ -28,7 +30,7 @@ function Timothy() {
   const [messages, setMessages] = React.useState<IMessage[]>([
     {
       _id: 1,
-      text: "Hi, I'm Timothy! I'm here to help you with your goals. What would you like to do today?",
+      text: "Hello, I'm Timothy, your local spiritual mentor.  I'm here to help answer your spiritual questions and to learn more about your spiritual maturity and help you grow in your relationship with Christ.\n\nI would like to ask you a few questions about your spiritual maturity. Please rank the following statements:",
       createdAt: new Date(),
       user: {
         _id: 2,
@@ -48,6 +50,7 @@ function Timothy() {
 
   const [currentQuestion, setCurrentQuestion] = React.useState(sortedQuestions[0]);
   const [showRating, setShowRating] = React.useState(false);
+
 
   const handleResponse = (response: number) => {
     setAnswers(prevAnswers => ({
@@ -91,6 +94,7 @@ function Timothy() {
     } else {
       console.log(answers)
       setShowRating(false);
+      setShowInputBar(true)
     }
   }, [currentQuestion]);
 
@@ -162,17 +166,17 @@ function Timothy() {
   return (
       <View style={styles.container}>
         <DropdownButton />
-        <View  style={styles.container2}>
+        <View style={styles.container2}>
           <GiftedChat
-            {...{ messages, onSend, renderMessageVideo }}
-            renderInputToolbar={props => customInputToolbar(props)}
-            renderBubble={(props) => <CustomSystemMessage {...props} />}
-            user={{
-              _id: 1,
-            }}
-        />
-        {showRating && <Rating onRate={handleResponse} />}
-      </View>
+              {...{ messages, onSend, renderMessageVideo }}
+              renderInputToolbar={showInputBar ? (props) => customInputToolbar(props) : () => null}
+              renderBubble={(props) => <CustomSystemMessage {...props} />}
+              user={{
+                _id: 1,
+              }}
+          />
+          {showRating && <Rating onRate={handleResponse} />}
+        </View>
       </View>
   );
 }
@@ -214,7 +218,7 @@ const CustomComposer = (props) => {
   return (
     <Composer
       {...props}
-      textInputStyle={{ 
+      textInputStyle={{
         color: '#eeeeee',
       }}
     />
