@@ -13,26 +13,26 @@ export default function Profile() {
                 <Button title={'Connect Church'} />
             </View>
             <View className="mx-6 mt-8">
-                <BouncyCheckbox text={'I would like to be an accountability\n' +
-                    'partner'} onPress={(isChecked: boolean) => { }} />
+                <BouncyCheckbox disableBuiltInState={true} text={'I would like to be an accountability\n' +
+                    'partner'} />
             </View>
             <View className="mx-6 mt-8">
-                <BouncyCheckbox text={"I would like to be a prayer partner"} onPress={(isChecked: boolean) => { }} />
+                <BouncyCheckbox disableBuiltInState={true} text={"I would like to be a prayer partner"} />
             </View>
             <View className={"mx-2 mt-2"}>
-                <TextInput style={styles.input} placeholder="First Name" placeholderTextColor={"#ffffff"}></TextInput>
+                <TextInput style={styles.input} editable={false} selectTextOnFocus={false} placeholder="First Name" placeholderTextColor={"#ffffff"}></TextInput>
             </View>
             <View className={"mx-2 mt-2"}>
-                <TextInput style={styles.input} placeholder="Last Name" placeholderTextColor={"#ffffff"}></TextInput>
+                <TextInput style={styles.input} editable={false} selectTextOnFocus={false} placeholder="Last Name" placeholderTextColor={"#ffffff"}></TextInput>
             </View>
             <View className={"mx-2 mt-2"}>
-                <TextInput style={styles.input} placeholder="Email Address" placeholderTextColor={"#ffffff"}></TextInput>
+                <TextInput style={styles.input} editable={false} selectTextOnFocus={false} placeholder="Email Address" placeholderTextColor={"#ffffff"}></TextInput>
             </View>
             <View className={"mx-2 mt-2"}>
                 <Text className='text-xl font-bold text-white'>{"Nudges"}</Text>
             </View>
             <View className={"mx-2 mt-0"}>
-                <TextInput style={styles.input} placeholder="Daily" placeholderTextColor={"#ffffff"}></TextInput>
+                <TextInput style={styles.input} editable={false} selectTextOnFocus={false} placeholder="Daily" placeholderTextColor={"#ffffff"}></TextInput>
             </View>
         </ScrollView>
     );
