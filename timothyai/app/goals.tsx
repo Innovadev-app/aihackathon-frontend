@@ -7,8 +7,31 @@ const styles = StyleSheet.create({
     paddingVertical: '2%',
     paddingHorizontal: '3%',
     height: '100%',
-    backgroundColor: '#e7e7e7',
+    backgroundColor: 'rgb(9, 9, 9)'
   },
+  titleText: {
+    color: 'white',  // White text color for dark theme
+    fontSize: 18,
+    padding: 10,
+    backgroundColor: '#333',  // Darker background for title
+  },
+  bodyText: {
+    color: 'white',  // White text color for dark theme
+    fontSize: 16,
+    padding: 10,
+    backgroundColor: '#212121',  // Dark background color
+  },
+  header: {
+    color: 'white',  // White text color for dark theme
+    fontSize: 36,
+  },
+  subheader: {
+    color: 'white',  // White text color for dark theme
+    fontSize: 14,
+  },
+  loadingText: {
+    color: 'white',  // White text color for dark theme
+  }
 });
 
 export default function Goals() {
@@ -48,23 +71,24 @@ export default function Goals() {
   }, []);
 
   return (
-    <View className="mx-6 mt-8">
-      <Text className="text-3xl font-bold text-white">Goals</Text>
-      <Text className="text-xs text-white mt-1">
+    <View style={styles.container}>
+      <Text style={styles.header}>Goals</Text>
+      <Text style={styles.subheader}>
         We’ve curated relevant, world class resources based on your conversation
-        with Timothy.   Click on the statement below to view your recommended goals.
+        with Timothy. Click on the statement below to view your recommended goals.
       </Text>
-      <View style={{ paddingTop: 10, paddingBottom: 175}}>
-        {data && data.length > 0 ? (  // Check if data is available before rendering AccordionList
+      <View style={{ paddingTop: 10, paddingBottom: 100 }}>
+        {data && data.length > 0 ? (
           <AccordionList
+            containerItemStyle={styles.bodyText}
             data={data}
-            customTitle={(item) => <Text>{item.title}</Text>}
-            customBody={(item) => <Text>{item.body}</Text>}
+            customTitle={(item) => <Text style={styles.bodyText}>{item.title}</Text>}
+            customBody={(item) => <Text style={styles.bodyText}>{item.body}</Text>}
             animationDuration={400}
             expandMultiple={true}
           />
         ) : (
-          <Text>Loading...</Text>  
+          <Text style={styles.loadingText}>Loading...</Text>
         )}
       </View>
     </View>
