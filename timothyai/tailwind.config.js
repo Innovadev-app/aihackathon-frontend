@@ -7,7 +7,7 @@ module.exports = {
         sans: ['Inter', 'sans-serif'], 
       },
       colors: {
-        green: '#00ff00',
+        green: '#00aba9',
         gray: '#BEC3C9',
         "gray-200": '#EEEEEE',
       },

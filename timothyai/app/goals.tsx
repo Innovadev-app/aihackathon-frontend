@@ -67,7 +67,7 @@ export default function Goals() {
     <View className="mx-6 mt-8">
       <Text className='text-3xl font-bold text-white'>Goals</Text>
       <Text className='text-xs text-white mt-1'>We’ve curated relevant, world class resources based on your conversation with Timothy</Text>
-            <View style={{paddingTop:10, backgroundColor:"#212121"}} >
+            <View style={{paddingTop:10}} >
                 <AccordionList
                     data={data}
                     customTitle={item => <Text>{item.title}</Text>}
