@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
 export default function PrayerRecord() {
@@ -12,8 +12,8 @@ export default function PrayerRecord() {
             <FontAwesome name="microphone" size={80} color="white" />
         </View>
         <View className="mx-6 mt-16">
-            <Text className='font-medium text-white mb-6'>Dear God,</Text>
-            <Text className='font-medium text-white mb-6'>
+            <Text className='font-medium text-white mb-6' style={styles.text}>Dear God,</Text>
+            <Text className='font-medium text-white mb-6' style={styles.text}>
                 We pray for Bob, who is struggling
                 with a knee injury.
                 We ask that you bring healing to his
@@ -27,3 +27,10 @@ export default function PrayerRecord() {
 
   );
 }
+
+const styles = StyleSheet.create({
+    text: {
+        fontSize: 20,
+        color: "#ffffff",
+    },
+});

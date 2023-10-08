@@ -17,22 +17,22 @@
   },
   "MaturityTopics":
   {
-    "Q1": {"Title":"You are a Christian", "Weight": 100},
+    "Q1": {"Title":"You are a Christian", "Weight": 10},
     "Q2": {"Title":"You belong to a local church", "Weight": 80},
     "Q3": {"Title":"You are seeking God’s forgiveness", "Weight": 1},
     "Q4": {"Title":"God feels very distant at this time in your life", "Weight": 1},
     "Q5": {"Title":"You have a good knowledge of Bible background and history", "Weight": 1},
-    "Q6": {"Title":"You have a good knowledge of the Old Testament", "Weight": 1},
+    "Q6": {"Title":"You have a good knowledge of the Old Testament", "Weight": 100},
     "Q7": {"Title":"You have a good knowledge of the New Testament", "Weight": 1},
     "Q8": {"Title":"You have a good knowledge of the basic Christian beliefs", "Weight": 1},
-    "Q9": {"Title":"You struggle seeing the value for your life", "Weight": 90},
+    "Q9": {"Title":"You struggle seeing the value for your life", "Weight": 10},
     "Q10": {"Title":"You have an accountability partner that helps you with your spiritual journey", "Weight": 1},
     "Q11": {"Title":"You am involved in Christian-based outreach programs in my community", "Weight": 1},
     "Q12": {"Title":"You don’t have time to read the Bible and pray most days", "Weight": 1},
-    "Q13": {"Title":"You don’t have any grudges you have not forgiven", "Weight": 1},
+    "Q13": {"Title":"You don’t have any grudges you have not forgiven", "Weight": 100},
     "Q14": {"Title":"Tithing is a joy for you", "Weight": 1},
     "Q15": {"Title":"You believe God is directly involved in your personal affairs", "Weight": 1},
-    "Q16": {"Title":"You often go out of your way to help my neighbor", "Weight": 1}
+    "Q16": {"Title":"You often go out of your way to help my neighbor", "Weight": 100}
   },
   "Prompts":{
     "Q1": {

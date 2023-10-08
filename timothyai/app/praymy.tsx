@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: '#e7e7e7',
     },
+    text: {
+        fontSize: 12,
+        color: "#ffffff",
+    },
 });
 
 export default function MyPrayers() {

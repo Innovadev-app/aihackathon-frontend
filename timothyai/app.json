@@ -15,12 +15,22 @@
       "**/*"
     ],
     "ios": {},
-    "android": {},
+    "android": {
+      "package": "com.afetting.Timothy"
+    },
     "runtimeVersion": {
       "policy": "sdkVersion"
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "ea9d84db-7f96-4ca7-85a6-48e708b560ae"
+      }
+    }
   }
 }
