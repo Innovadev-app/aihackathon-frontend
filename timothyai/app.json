@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "myapp",
-    "slug": "myapp",
+    "name": "Timothy",
+    "slug": "Timothy",
     "version": "1.0.0",
     "orientation": "portrait",
-    "scheme": "myapp",
+    "scheme": "Timothy",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "",
+      "image": "./assets/images/timothy-logo.png",
       "resizeMode": "cover",
       "backgroundColor": "#000000"
     },
