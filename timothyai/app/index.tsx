@@ -51,7 +51,6 @@ function Timothy() {
   const [currentQuestion, setCurrentQuestion] = React.useState(sortedQuestions[0]);
   const [showRating, setShowRating] = React.useState(false);
 
-
   const handleResponse = (response: number) => {
     setAnswers(prevAnswers => ({
       ...prevAnswers,
@@ -93,6 +92,17 @@ function Timothy() {
       askQuestion();
     } else {r
       console.log(answers)
+      const questionMessage = [{
+        _id: Math.round(Math.random() * 1000000),
+        text: "Thank you for answering my question! \n\nWith the answers you have given I have been able to customize your goals. You can check them out now, ask me a question, or we can do some more questions.",
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'GiftedChat',
+          avatar: 'https://t3.ftcdn.net/jpg/05/54/39/50/240_F_554395094_D4zOhvLOkvVt5OaWq8dUhqcHDDS87ltG.jpg',
+        },
+      }];
+      setMessages((previousMessages) => GiftedChat.append(previousMessages, questionMessage));
       setShowRating(false);
       setShowInputBar(true)
     }
