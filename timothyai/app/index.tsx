@@ -1,28 +1,28 @@
 import * as React from 'react';
-import {View, StyleSheet, Dimensions, Platform, Text, Button} from 'react-native';
+import { View, StyleSheet, Dimensions, Platform, Text, Button } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 // import { WebView } from 'react-native-webview';
 import { GiftedChat, IMessage, InputToolbar, Composer } from 'react-native-gifted-chat';
 import DropdownButton from '../components/DropDownPicker';
 import file from '../src/utils/survey.json'
-import {useState} from "react";
+import { useState } from "react";
 
 const { width } = Dimensions.get('window');
 // TODO: add Dynamo?
 
 
 function Timothy() {
-    const [showInputBar, setShowInputBar] = useState(false);
+  const [showInputBar, setShowInputBar] = useState(false);
 
   const ratings = ['Strongly agree', 'Somewhat agree', 'Neutral', 'Somewhat disagree', 'Strongly disagree'];
 
   const Rating = ({ onRate }) => {
     return (
-        <View>
-          {ratings.map((rating, index) => (
-              <Button key={index} title={rating} onPress={() => onRate(index + 1)} />
-          ))}
-        </View>
+      <View>
+        {ratings.map((rating, index) => (
+          <Button key={index} title={rating} onPress={() => onRate(index + 1)} />
+        ))}
+      </View>
     );
   };
 
@@ -34,7 +34,7 @@ function Timothy() {
       createdAt: new Date(),
       user: {
         _id: 2,
-        name: 'Timothy',
+        name: 'GiftedChat',
         avatar: require('../assets/images/timothy-avatar.png'),
       },
     },
@@ -43,8 +43,8 @@ function Timothy() {
 
   // Sorts question by weight
   const sortedQuestions = Object.entries(file.MaturityTopics)
-      .sort(([,a], [,b]) => b.Weight - a.Weight)
-      .slice(0, 3);
+    .sort(([, a], [, b]) => b.Weight - a.Weight)
+    .slice(0, 3);
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const [answers, setAnswers] = React.useState({});
 
@@ -86,11 +86,25 @@ function Timothy() {
     setShowRating(true);
   };
 
+  const saveQuestions = (answers: any) => {
+    fetch("https://1lqp8lahll.execute-api.us-west-2.amazonaws.com/prod/timothy-chat", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        answers,
+      }),
+    })
+  }
+
   // Call askQuestion whenever currentQuestion changes
   React.useEffect(() => {
     if (currentQuestion) {
       askQuestion();
-    } else {r
+    } else {
+      saveQuestions(answers);
       console.log(answers)
       const questionMessage = [{
         _id: Math.round(Math.random() * 1000000),
@@ -99,7 +113,7 @@ function Timothy() {
         user: {
           _id: 2,
           name: 'GiftedChat',
-          avatar: '../assets/images/timothy-avatar.png',
+          avatar: require('../assets/images/timothy-avatar.png'),
         },
       }];
       setMessages((previousMessages) => GiftedChat.append(previousMessages, questionMessage));
@@ -140,8 +154,8 @@ function Timothy() {
           prompt: newMessages[0].text,
         }),
       })
-          .then((response) => response.json())
-          .then(handleServerResponse);
+        .then((response) => response.json())
+        .then(handleServerResponse);
     }
   };
 
@@ -157,37 +171,37 @@ function Timothy() {
   const renderMessageVideo = (props: any) => {
     const { currentMessage } = props;
     if (currentMessage.video.includes('vimeo')) {
-      if(Platform.OS === 'web') {
+      if (Platform.OS === 'web') {
         return null
       }
     }
     return (
-        <Video
-            style={styles.video}
-            source={{
-              uri: currentMessage!.video!,
-            }}
-            useNativeControls
-            resizeMode={ResizeMode.COVER}
-        />
+      <Video
+        style={styles.video}
+        source={{
+          uri: currentMessage!.video!,
+        }}
+        useNativeControls
+        resizeMode={ResizeMode.COVER}
+      />
 
     );
   };
   return (
-      <View style={styles.container}>
-        <DropdownButton />
-        <View style={styles.container2}>
-          <GiftedChat
-              {...{ messages, onSend, renderMessageVideo }}
-              renderInputToolbar={showInputBar ? (props) => customInputToolbar(props) : () => null}
-              renderBubble={(props) => <CustomSystemMessage {...props} />}
-              user={{
-                _id: 1,
-              }}
-          />
-          {showRating && <Rating onRate={handleResponse} />}
-        </View>
+    <View style={styles.container}>
+      <DropdownButton />
+      <View style={styles.container2}>
+        <GiftedChat
+          {...{ messages, onSend, renderMessageVideo }}
+          renderInputToolbar={showInputBar ? (props) => customInputToolbar(props) : () => null}
+          renderBubble={(props) => <CustomSystemMessage {...props} />}
+          user={{
+            _id: 1,
+          }}
+        />
+        {showRating && <Rating onRate={handleResponse} />}
       </View>
+    </View>
   );
 }
 
@@ -198,16 +212,16 @@ const styles = StyleSheet.create({
   },
   container2: {
     flex: 1,
-    
+
     position: 'relative',
-    paddingTop:50,
+    paddingTop: 50,
   },
   video: {
     width: width / 1.5,
     height: 150,
     margin: 13,
     borderRadius: 13,
-    
+
   },
 });
 
@@ -244,8 +258,8 @@ const CustomSystemMessage = (props) => {
       alignItems: 'center',
       flexWrap: 'wrap',  // Allow wrapping
       maxWidth: Dimensions.get('window').width - 130,  // Set max width
-      }}>
-      <Text style={{color: "#eeeeee"}}>{props.currentMessage.text}</Text>
+    }}>
+      <Text style={{ color: "#eeeeee" }}>{props.currentMessage.text}</Text>
     </View>
   );
 };
