@@ -52,9 +52,9 @@ export default function Goals() {
       <Text className="text-3xl font-bold text-white">Goals</Text>
       <Text className="text-xs text-white mt-1">
         We’ve curated relevant, world class resources based on your conversation
-        with Timothy
+        with Timothy.   Click on the statement below to view your recommended goals.
       </Text>
-      <View style={{ paddingTop: 10 }}>
+      <View style={{ paddingTop: 10, paddingBottom: 175}}>
         {data && data.length > 0 ? (  // Check if data is available before rendering AccordionList
           <AccordionList
             data={data}

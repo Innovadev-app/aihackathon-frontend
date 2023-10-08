@@ -1,0 +1,11 @@
+Items Remaining for the Final Push:
+Andrew fix Tim intro statement
+Andrew fix spacing below initial buttons
+Andrew hide message box while prompting
+Andrew after third prompt, ask the user if they want to answer more or go view their recommended goals
+xxKurt Add Goals header text: Click on the statement below to view your recommended goals. 
+Andrew Save the 3 answers in dynamodb
+Kurt large Timothy avatar above his name
+KUrt make goal line item white = gray
+Bill Update Bob's Knee static words
+xxMake the View Scrollable in the Profile
