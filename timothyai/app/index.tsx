@@ -91,7 +91,7 @@ function Timothy() {
   React.useEffect(() => {
     if (currentQuestion) {
       askQuestion();
-    } else {
+    } else {r
       console.log(answers)
       setShowRating(false);
       setShowInputBar(true)

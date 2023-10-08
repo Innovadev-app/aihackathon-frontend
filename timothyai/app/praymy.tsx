@@ -61,7 +61,6 @@ export default function MyPrayers() {
 
     return (
         <View className="mx-6 mt-8">
-            <Text className='text-3xl font-bold text-white'>My Prayers</Text>
             <Text className='text-xs text-white mt-1'>Here are some of your recent prayers.</Text>
             <View style={{ paddingTop: 10, backgroundColor: "#212121" }} >
                 <AccordionList

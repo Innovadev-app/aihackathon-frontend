@@ -72,7 +72,6 @@ export default function Goals() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Goals</Text>
       <Text style={styles.subheader}>
         We’ve curated relevant, world class resources based on your conversation
         with Timothy. Click on the statement below to view your recommended goals.

@@ -5,7 +5,7 @@ export default function Recommend() {
   return (
       <View>
     <View className="mx-6 mt-8">
-      <Text className='text-3xl font-bold text-white mb-6'>Recommend</Text>
+
     </View>
           <View className="mx-6 mt-16">
               <Text className='font-medium text-white mb-6'>Dear Lord,</Text>

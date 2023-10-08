@@ -6,7 +6,7 @@ export default function PrayerRecord() {
   return (
     <View>
         <View className="mx-6 mt-8">
-            <Text className='text-3xl font-bold text-white mb-6'>Record</Text>
+
         </View>
         <View className="mx-6 mt-8 items-center justify-center">
             <FontAwesome name="microphone" size={80} color="white" />
