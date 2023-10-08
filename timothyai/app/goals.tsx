@@ -15,10 +15,11 @@ const styles = StyleSheet.create({
 export default function Goals() {
   const handleServerResponse = (responseData: any) => {
     console.log(JSON.stringify(responseData));
-    data = responseData;
+    return responseData;
   };
 
- fetch("https://1lqp8lahll.execute-api.us-west-2.amazonaws.com/prod/timothy-chat", {
+ const pullData = () =>{ 
+  return fetch("https://1lqp8lahll.execute-api.us-west-2.amazonaws.com/prod/timothy-chat", {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -26,8 +27,10 @@ export default function Goals() {
     }
   })
       .then((response) => response.json())
-      .then(handleServerResponse);
-
+      .then((responseData) => { 
+        console.log(JSON.stringify(responseData));
+        handleServerResponse });
+ };
 
 
 
@@ -69,7 +72,7 @@ export default function Goals() {
       <Text className='text-xs text-white mt-1'>We’ve curated relevant, world class resources based on your conversation with Timothy</Text>
             <View style={{paddingTop:10}} >
                 <AccordionList
-                    data={data}
+                    data={pullData}
                     customTitle={item => <Text>{item.title}</Text>}
                     customBody={item => <Text>{item.body}</Text>}
                     animationDuration={400}
