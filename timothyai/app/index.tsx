@@ -67,7 +67,6 @@ function Timothy() {
     setMessages((previousMessages) => GiftedChat.append(previousMessages, newMessages));
     setCurrentQuestionIndex(prevIndex => prevIndex + 1);
     setCurrentQuestion(sortedQuestions[currentQuestionIndex + 1]);
-    setShowRating(false);
   };
 
   const askQuestion = () => {
@@ -91,6 +90,7 @@ function Timothy() {
       askQuestion();
     } else {
       console.log(answers)
+      setShowRating(false);
     }
   }, [currentQuestion]);
 
