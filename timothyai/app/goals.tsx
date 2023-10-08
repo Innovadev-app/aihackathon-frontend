@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
 export default function Goals() {
   const handleServerResponse = (responseData: any) => {
     console.log(JSON.stringify(responseData));
+    data = responseData;
   };
 
  fetch("https://1lqp8lahll.execute-api.us-west-2.amazonaws.com/prod/timothy-chat", {
@@ -38,7 +39,7 @@ export default function Goals() {
     }
 }, []);
 
-  const data = [{
+  let data =[{
       title: "You are a Christian",
       body: "John 3:16 \"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.\n\n Romans 10:9 \"If you declare with your mouth, 'Jesus is Lord,' and believe in your heart that God raised him from the dead, you will be saved.\"\n\n Ephesians 2:8-9 \"For it is by grace you have been saved, through faith\u2014and this is not from yourselves, it is the gift of God\u2014 not by works, so that no one can boast.\""
     },

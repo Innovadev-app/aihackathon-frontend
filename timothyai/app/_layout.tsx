@@ -79,10 +79,12 @@ function RootLayoutNav() {
 
   return (
     <Tab.Navigator initialRouteName="Timothy"
+    
     screenOptions={{
       tabBarStyle: { backgroundColor: 'black' },
       tabBarActiveTintColor: '#53FFC5',
       tabBarInactiveTintColor: '#BEC3C9',
+      
     }}
     >
         <Tab.Screen
